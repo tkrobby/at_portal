@@ -3,6 +3,7 @@ $button_login_portal = 'Login Ke Portal'
 $field_phone_number = "mid"
 $button_lanjut = "//button[contains(@class,'btn btn-primary btn-block font-helve')]"
 $text_alert = '//*[@id="page-basic"]/div/div/div/div[2]/div/div/div[2]/div'
+$text_after_register = '//*[@id="page-basic"]/div/div/div/div[2]/div/div/form/div/div[2]'
 
 def click_button_aktivasi()
     $browser.find_element(:link_text,$button_aktivasi_akun).click
@@ -26,5 +27,9 @@ end
 
 def get_alert_register()
     $browser.find_element(:xpath,$text_alert).text
+end
+
+def get_alert_after_register()
+    $browser.find_element(:xpath,$text_after_register).text
 end
 

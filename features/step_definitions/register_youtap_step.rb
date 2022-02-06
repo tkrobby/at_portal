@@ -10,12 +10,13 @@ end
 
 And("User click button aktivasi akun") do
     click_button_aktivasi()
-    sleep(10)
+    sleep(5)
 end
 
 When("User input phone number {string}") do |keyword|
     input_field_phone_number(keyword)
-    sleep(5)
+    sleep(2)
+    screenshot("register_page")
 end
 
 And("User click button Lanjut") do
@@ -25,6 +26,15 @@ end
 
 Then("User verify alerts") do 
     sleep(5)
-    String a = get_alert_register()
-    assert(a == 'Nomer HP yang anda masukkan tidak terdaftar')
+    String text_error = get_alert_register()
+    assert(text_error == 'Nomer HP yang anda masukkan tidak terdaftar')
+    screenshot("alert_register")
+end
+
+Then("User verify after register") do 
+    sleep(5)
+    String text_after_register = get_alert_after_register()
+    assert(text_after_register == 'Kami telah kirimkan link ke no HP kamu untuk membuat password Portal Usaha Youtap.')
+    sleep(5)
+    screenshot("after_register")
 end
